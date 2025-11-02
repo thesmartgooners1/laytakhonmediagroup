@@ -1,957 +1,895 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Agency | Innovative Design Solutions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #3a86ff;
-            --secondary: #8338ec;
-            --accent: #ff006e;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, #3a86ff, #8338ec);
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            background-color: #f8f9fa;
-            padding-top: 0; /* Remove default padding for fixed navbar */
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        
-        .navbar {
-            transition: all 0.4s;
-            padding: 1rem 0;
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .navbar.scrolled {
-            padding: 0.75rem 0;
-        }
-        
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--primary) !important;
-        }
-        
-        .nav-link {
-            color: #495057 !important;
-            font-weight: 500;
-            position: relative;
-            margin: 0 10px;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Mobile Menu Styles */
-        .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
-            margin-right: 0.5rem;
-        }
-        
-        .navbar-toggler-icon {
-            background-image: none;
-            width: 24px;
-            height: 24px;
-            position: relative;
-        }
-        
-        .navbar-toggler-icon::before,
-        .navbar-toggler-icon::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-        
-        .navbar-toggler-icon::before {
-            top: 0;
-        }
-        
-        .navbar-toggler-icon::after {
-            bottom: 0;
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-            top: 10px;
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-            bottom: 10px;
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-            background: transparent;
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-            top: 10px;
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-            bottom: 10px;
-        }
-        
-        .navbar-collapse {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            margin-top: 10px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-nav {
-            align-items: center;
-        }
-        
-        .nav-item {
-            margin: 10px 0;
-            width: 100%;
-        }
-        
-        .nav-link {
-            padding: 12px 20px !important;
-            border-radius: 10px;
-            transition: all 0.3s;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .nav-link:hover {
-            background: var(--primary);
-            color: white !important;
-            transform: translateX(5px);
-        }
-        
-        .mobile-cta {
-            margin-top: 15px;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .hero {
-            min-height: 100vh;
-            background: url('https://placehold.co/1920x1080/1a1a2e/ffffff?text=Creative+Agency') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin-top: 80px; /* Account for fixed navbar */
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 26, 46, 0.8);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 4.5rem;
-            color: white;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: #e9ecef;
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            height: 100%;
-            transition: all 0.3s;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 28px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .portfolio-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(58, 134, 255, 0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            padding: 20px;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .testimonials {
-            background: var(--dark);
-            color: white;
-        }
-        
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .client-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-size: 1.2rem;
-            margin: 0 10px;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-        }
-        
-        footer {
-            background: var(--dark);
-            color: #e9ecef;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-links a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.3s;
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .scroll-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            background: var(--secondary);
-            transform: translateY(-5px);
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        @media (max-width: 991px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            .navbar-collapse {
-                margin-top: 15px;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .hero {
-                margin-top: 70px;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .navbar-brand {
-                font-size: 1.6rem;
-            }
-            
-            .btn-primary, .btn-outline-primary {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .mobile-cta {
-                margin-top: 10px;
-            }
-            
-            .mobile-cta .btn {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-    </style>
+  <!-- 
+    - primary meta tags
+  -->
+  <title>Adex</title>
+  <meta name="title" content="Adex">
+  <meta name="description" content="This is a business agency html template made by codewithsadee">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-slide-1.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-slide-2.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-slide-3.jpg">
+
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">CREATIVE<span style="color: var(--accent);">.</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Testimonials</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <div class="mobile-cta d-lg-none">
-                    <a href="#contact" class="btn btn-primary w-100 mb-2">Get Started</a>
-                    <a href="#portfolio" class="btn btn-outline-primary w-100">View Work</a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <h1 class="mb-4">Transforming Ideas into <span style="color: var(--accent);">Creative</span> Reality</h1>
-                    <p class="mb-5">We craft innovative digital experiences that captivate audiences and drive business growth. From stunning designs to powerful marketing strategies, we bring your vision to life.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#contact" class="btn btn-primary">Get Started</a>
-                        <a href="#portfolio" class="btn btn-outline-primary">View Work</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <img src="https://placehold.co/600x500/3a86ff/ffffff?text=Creative+Design" alt="Creative Design" class="img-fluid floating" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);">
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- 
+    - #HEADER
+  -->
 
-    <!-- Services Section -->
-    <section id="services" class="py-100">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3">Our <span style="color: var(--primary);">Services</span></h2>
-                    <p class="text-muted">We offer comprehensive creative solutions tailored to your business needs</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h4>Brand Identity</h4>
-                        <p class="text-muted">We create compelling brand identities that resonate with your audience and set you apart from competitors.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h4>Web Development</h4>
-                        <p class="text-muted">Custom websites and applications built with the latest technologies for optimal performance and user experience.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4>App Design</h4>
-                        <p class="text-muted">Intuitive mobile applications designed to engage users and deliver exceptional functionality.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4>Digital Marketing</h4>
-                        <p class="text-muted">Strategic marketing campaigns that increase visibility, drive traffic, and boost conversions.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h4>Video Production</h4>
-                        <p class="text-muted">Professional video content that tells your story and captures the attention of your audience.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h4>E-Commerce</h4>
-                        <p class="text-muted">Complete online store solutions that provide seamless shopping experiences and maximize sales.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <header class="header" data-header>
+    <div class="container">
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-100 bg-light">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3">Our <span style="color: var(--primary);">Portfolio</span></h2>
-                    <p class="text-muted">Explore our latest projects and see how we've helped businesses succeed</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="https://placehold.co/400x300/3a86ff/ffffff?text=Project+1" alt="Project 1" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h5 class="text-white mb-2">Brand Redesign</h5>
-                            <p class="text-white-50 small">Corporate Identity</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="https://placehold.co/400x300/8338ec/ffffff?text=Project+2" alt="Project 2" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h5 class="text-white mb-2">E-Commerce Platform</h5>
-                            <p class="text-white-50 small">Web Development</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="https://placehold.co/400x300/ff006e/ffffff?text=Project+3" alt="Project 3" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h5 class="text-white mb-2">Mobile App</h5>
-                            <p class="text-white-50 small">UI/UX Design</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="https://placehold.co/400x300/3a86ff/ffffff?text=Project+4" alt="Project 4" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h5 class="text-white mb-2">Marketing Campaign</h5>
-                            <p class="text-white-50 small">Digital Marketing</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="https://placehold.co/400x300/8338ec/ffffff?text=Project+5" alt="Project 5" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h5 class="text-white mb-2">Corporate Website</h5>
-                            <p class="text-white-50 small">Web Design</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item">
-                        <img src="https://placehold.co/400x300/ff006e/ffffff?text=Project+6" alt="Project 6" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h5 class="text-white mb-2">Product Launch</h5>
-                            <p class="text-white-50 small">Event Design</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <a href="#" class="logo">
+        <img src="./assets/images/logo-light.svg" width="74" height="24" alt="Adex home" class="logo-light">
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials py-100">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3">Client <span style="color: var(--accent);">Testimonials</span></h2>
-                    <p class="text-white-50">Hear what our clients have to say about our creative solutions</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="d-flex align-items-center mb-4">
-                            <img src="https://placehold.co/80x80/3a86ff/ffffff?text=JS" alt="Client" class="client-img me-3">
-                            <div>
-                                <h5 class="mb-0">John Smith</h5>
-                                <small class="text-white-50">CEO, TechCorp</small>
-                            </div>
-                        </div>
-                        <p class="text-white-50">"The team exceeded our expectations with their innovative approach and attention to detail. Our brand transformation has led to a 40% increase in customer engagement."</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="d-flex align-items-center mb-4">
-                            <img src="https://placehold.co/80x80/8338ec/ffffff?text=SA" alt="Client" class="client-img me-3">
-                            <div>
-                                <h5 class="mb-0">Sarah Anderson</h5>
-                                <small class="text-white-50">Marketing Director</small>
-                            </div>
-                        </div>
-                        <p class="text-white-50">"Working with this agency was a game-changer for our business. Their strategic thinking and creative execution delivered outstanding results."</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="d-flex align-items-center mb-4">
-                            <img src="https://placehold.co/80x80/ff006e/ffffff?text=MR" alt="Client" class="client-img me-3">
-                            <div>
-                                <h5 class="mb-0">Michael Rodriguez</h5>
-                                <small class="text-white-50">Founder, StartupX</small>
-                            </div>
-                        </div>
-                        <p class="text-white-50">"From concept to execution, the team delivered a perfect digital experience that aligns with our brand vision. Highly recommended!"</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <img src="./assets/images/logo-dark.svg" width="74" height="24" alt="Adex home" class="logo-dark">
+      </a>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-100">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3">Get in <span style="color: var(--primary);">Touch</span></h2>
-                    <p class="text-muted">Ready to start your next project? Let's create something amazing together</p>
-                </div>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-5">
-                    <div class="d-flex align-items-start mb-4">
-                        <div class="me-3">
-                            <div class="service-icon" style="background: var(--gradient);">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Our Location</h5>
-                            <p class="text-muted mb-0">123 Creative Street, Design District<br>New York, NY 10001</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <div class="me-3">
-                            <div class="service-icon" style="background: var(--gradient);">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Call Us</h5>
-                            <p class="text-muted mb-0">(555) 123-4567<br>(555) 987-6543</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <div class="me-3">
-                            <div class="service-icon" style="background: var(--gradient);">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Email Us</h5>
-                            <p class="text-muted mb-0">hello@creativeagency.com<br>info@creativeagency.com</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start">
-                        <div class="me-3">
-                            <div class="service-icon" style="background: var(--gradient);">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Working Hours</h5>
-                            <p class="text-muted mb-0">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="social-links d-flex mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <form class="contact-form">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subject">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+      <nav class="navbar" data-navbar>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="mb-4">Creative<span style="color: var(--accent);">.</span></h4>
-                    <p class="text-white-50 mb-4">We create innovative digital experiences that captivate audiences and drive business growth.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="mb-4">Quick Links</h5>
-                    <div class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#services">Services</a>
-                        <a href="#portfolio">Portfolio</a>
-                        <a href="#testimonials">Testimonials</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Our Services</h5>
-                    <div class="footer-links">
-                        <a href="#">Brand Identity</a>
-                        <a href="#">Web Development</a>
-                        <a href="#">App Design</a>
-                        <a href="#">Digital Marketing</a>
-                        <a href="#">Video Production</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Newsletter</h5>
-                    <p class="text-white-50 mb-4">Subscribe to our newsletter for the latest updates and creative insights.</p>
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Your Email">
-                        <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4" style="background: rgba(255, 255, 255, 0.1);">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="mb-0 text-white-50">&copy; 2023 Creative. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="./assets/images/logo-light.svg" width="74" height="24" alt="Adex home">
+          </a>
 
-    <!-- Scroll to Top Button -->
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#" class="navbar-link">Home</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">Projects</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">Contact</a>
+          </li>
+
+        </ul>
+
+        <div class="wrapper">
+          <a href="mailto:info@email.com" class="contact-link">info@email.com</a>
+
+          <a href="tel:001234567890" class="contact-link">00 (123) 456 78 90</a>
+        </div>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-dribbble"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <a href="#" class="btn btn-primary">Free Trial</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
     </div>
+  </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
 
-            // Scroll to top button
-            const scrollTop = document.querySelector('.scroll-top');
-            if (window.scrollY > 300) {
-                scrollTop.classList.add('show');
-            } else {
-                scrollTop.classList.remove('show');
-            }
-        });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu when link is clicked
-                    const navbarCollapse = document.querySelector('.navbar-collapse');
-                    const navbarToggler = document.querySelector('.navbar-toggler');
-                    if (navbarCollapse.classList.contains('show')) {
-                        bootstrap.Collapse.getInstance(navbarToggler).hide();
-                    }
-                }
-            });
-        });
 
-        // Scroll to top functionality
-        document.querySelector('.scroll-top').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
 
-        // Form submission
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            });
-        }
+  <main>
+    <article>
 
-        // Animation on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
+      <!-- 
+        - #HERO
+      -->
 
-        // Set initial state for animation
-        document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-        });
+      <section class="section hero has-bg-image" aria-label="home"
+        style="background-image: url('./assets/images/hero-bg.jpg')">
+        <div class="container">
 
-        // Trigger animation on scroll
-        window.addEventListener('scroll', animateOnScroll);
-        // Trigger once on load
-        animateOnScroll();
-    </script>
+          <div class="hero-content">
+
+            <h1 class="h1 hero-title">Crafting project specific solutions with expertise.</h1>
+
+            <p class="hero-text">
+              We’re a creative company that focuses on establishing long-term relationships with customers.
+            </p>
+
+            <div class="btn-wrapper">
+
+              <a href="#" class="btn btn-primary">Explore Now</a>
+
+              <a href="#" class="btn btn-outline">Contact Us</a>
+
+            </div>
+
+          </div>
+
+          <div class="hero-slider" data-slider>
+
+            <div class="slider-inner">
+              <ul class="slider-container" data-slider-container>
+
+                <li class="slider-item">
+
+                  <figure class="img-holder" style="--width: 575; --height: 550;">
+                    <img src="./assets/images/hero-slide-1.jpg" width="575" height="550" alt="" class="img-cover">
+                  </figure>
+
+                </li>
+
+                <li class="slider-item">
+
+                  <div class="hero-card">
+                    <figure class="img-holder" style="--width: 575; --height: 550;">
+                      <img src="./assets/images/hero-slide-2.jpg" width="575" height="550" alt="hero banner"
+                        class="img-cover">
+                    </figure>
+
+                    <button class="play-btn" aria-label="play adex intro">
+                      <ion-icon name="play" aria-hidden="true"></ion-icon>
+                    </button>
+                  </div>
+
+                </li>
+
+                <li class="slider-item">
+
+                  <figure class="img-holder" style="--width: 575; --height: 550;">
+                    <img src="./assets/images/hero-slide-3.jpg" width="575" height="550" alt="" class="img-cover">
+                  </figure>
+
+                </li>
+
+              </ul>
+            </div>
+
+            <button class="slider-btn prev" aria-label="slide to previous" data-slider-prev>
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+
+            <button class="slider-btn next" aria-label="slide to next" data-slider-next>
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #SERVICE
+      -->
+
+      <section class="section service" aria-labelledby="service-label">
+        <div class="container">
+
+          <p class="section-subtitle" id="service-label">What We Do?</p>
+
+          <h2 class="h2 section-title">
+            The service we offer is specifically designed to meet your needs.
+          </h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">24/7 Support</h3>
+
+                <p class="card-text">
+                  Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras
+                  justo.
+                </p>
+
+                <a href="#" class="btn-text">
+                  <span class="span">Learn More</span>
+
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">Secure Payments</h3>
+
+                <p class="card-text">
+                  Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras
+                  justo.
+                </p>
+
+                <a href="#" class="btn-text">
+                  <span class="span">Learn More</span>
+
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">Daily Updates</h3>
+
+                <p class="card-text">
+                  Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras
+                  justo.
+                </p>
+
+                <a href="#" class="btn-text">
+                  <span class="span">Learn More</span>
+
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <div class="card-icon">
+                  <ion-icon name="pie-chart-outline" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">Market Research</h3>
+
+                <p class="card-text">
+                  Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras
+                  justo.
+                </p>
+
+                <a href="#" class="btn-text">
+                  <span class="span">Learn More</span>
+
+                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="about" aria-labelledby="about-label">
+        <div class="container">
+
+          <figure class="about-banner">
+            <img src="./assets/images/about-banner.png" width="800" height="580" loading="lazy" alt="about banner"
+              class="w-100">
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle" id="about-label">Why Choose Us?</p>
+
+            <h2 class="h2 section-title">
+              We bring solutions to make life easier for our clients.
+            </h2>
+
+            <ul>
+
+              <li class="about-item">
+                <div class="accordion-card expanded" data-accordion>
+
+                  <h3 class="card-title">
+                    <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Professional Design</spna>
+                    </button>
+                  </h3>
+
+                  <p class="accordion-content">
+                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+                    vel.
+                  </p>
+
+                </div>
+              </li>
+
+              <li class="about-item">
+                <div class="accordion-card" data-accordion>
+
+                  <h3 class="card-title">
+                    <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Top-Notch Support</spna>
+                    </button>
+                  </h3>
+
+                  <p class="accordion-content">
+                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+                    vel.
+                  </p>
+
+                </div>
+              </li>
+
+              <li class="about-item">
+                <div class="accordion-card" data-accordion>
+
+                  <h3 class="card-title">
+                    <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Exclusive Assets</spna>
+                    </button>
+                  </h3>
+
+                  <p class="accordion-content">
+                    Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+                    sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+                    vel.
+                  </p>
+
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #FEATURE
+      -->
+
+      <section class="section feature" aria-labelledby="feature-label">
+        <div class="container">
+
+          <figure class="feature-banner">
+            <img src="./assets/images/feature-banner.png" width="800" height="531" loading="lazy" alt="feature banner"
+              class="w-100">
+          </figure>
+
+          <div class="feature-content">
+
+            <p class="section-subtitle" id="feautre-label">Our Solutions</p>
+
+            <h2 class="h2 section-title">
+              We make your spending stress-free for you to have the perfect control.
+            </h2>
+
+            <p class="section-text">
+              Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,
+              dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                <div class="feature-card">
+
+                  <div class="card-icon">
+                    <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <span class="span">
+                    Aenean quam ornare. Curabitur blandit.
+                  </span>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="feature-card">
+
+                  <div class="card-icon">
+                    <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <span class="span">
+                    Nullam quis risus eget urna mollis ornare.
+                  </span>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="feature-card">
+
+                  <div class="card-icon">
+                    <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <span class="span">
+                    Etiam porta euismod malesuada mollis.
+                  </span>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="feature-card">
+
+                  <div class="card-icon">
+                    <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <span class="span">
+                    Vivamus sagittis lacus vel augue rutrum.
+                  </span>
+
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #STATS
+      -->
+
+      <section class="stats" aria-label="our stats">
+        <div class="container">
+
+          <ul class="stats-card has-bg-image" style="background-image: url('./assets/images/stats-bg.jpg')">
+
+            <li>
+              <p class="card-text">
+                <span class="h1">7518</span>
+
+                <spna class="span">Completed Projects</spna>
+              </p>
+            </li>
+
+            <li>
+              <p class="card-text">
+                <span class="h1">3472</span>
+
+                <spna class="span">Happy Customers</spna>
+              </p>
+            </li>
+
+            <li>
+              <p class="card-text">
+                <span class="h1">2184</span>
+
+                <spna class="span">Expert Employees</spna>
+              </p>
+            </li>
+
+            <li>
+              <p class="card-text">
+                <span class="h1">4523</span>
+
+                <spna class="span">Awards Won</spna>
+              </p>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #PROJECT
+      -->
+
+      <section class="section project" aria-labelledby="project-label">
+        <div class="container">
+
+          <p class="section-subtitle" id="project-label">Case Studies</p>
+
+          <h2 class="h2 section-title">
+            Check out some of our awesome projects with creative ideas and great design.
+          </h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="project-card">
+
+                <figure class="card-banner img-holder" style="--width: 560; --height: 350;">
+                  <img src="./assets/images/blog-1.jpg" width="560" height="350" loading="lazy"
+                    alt="Ligula tristique quis risus" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Ligula tristique quis risus</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras
+                    imperdiet nun eu dolor.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+
+                      <time class="meta-text" datetime="2022-04-14">14 Apr 2022</time>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="meta-text">Coding</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="project-card">
+
+                <figure class="card-banner img-holder" style="--width: 560; --height: 350;">
+                  <img src="./assets/images/blog-2.jpg" width="560" height="350" loading="lazy"
+                    alt="Nullam id dolor elit id nibh" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Nullam id dolor elit id nibh</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras
+                    imperdiet nun eu dolor.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+
+                      <time class="meta-text" datetime="2022-03-29">29 Mar 2022</time>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="meta-text">Workspace</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="project-card">
+
+                <figure class="card-banner img-holder" style="--width: 560; --height: 350;">
+                  <img src="./assets/images/blog-3.jpg" width="560" height="350" loading="lazy"
+                    alt="Ultricies fusce porta elit" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Ultricies fusce porta elit</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras
+                    imperdiet nun eu dolor.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+
+                      <time class="meta-text" datetime="2022-02-26">26 Feb 2022</time>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="meta-text">Meeting</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #CTA
+      -->
+
+      <section class="cta" aria-label="call to action">
+        <div class="container">
+
+          <h2 class="h2 section-title">
+            Join our community by using our services and grow your business.
+          </h2>
+
+          <a href="#" class="btn btn-primary">Try it For Free</a>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+    <div class="container grid-list">
+
+      <div class="footer-brand">
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo-light.svg" width="74" height="24" alt="Adex home">
+        </a>
+
+        <p class="footer-text">
+          &copy; 2022 codewithsadee. <br> All rights reserved.
+        </p>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-dribbble"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <ul class="footer-list">
+
+        <li>
+          <p class="h4 footer-list-title">Get in Touch</p>
+        </li>
+
+        <li>
+          <address class="footer-text">
+            Moonshine St. 14/05 Light City, London, United Kingdom
+          </address>
+        </li>
+
+        <li>
+          <a href="mailto:info@email.com" class="footer-link">info@email.com</a>
+        </li>
+
+        <li>
+          <a href="tel:001234567890" class="footer-link">00 (123) 456 78 90</a>
+        </li>
+
+      </ul>
+
+      <ul class="footer-list">
+
+        <li>
+          <p class="h4 footer-list-title">Learn More</p>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">About Us</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Our Story</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Projects</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Terms of Use</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Privacy Policy</a>
+        </li>
+
+      </ul>
+
+      <div class="footer-list">
+
+        <p class="h4 footer-list-title">Our Newsletter</p>
+
+        <p class="footer-text">
+          Subscribe to our newsletter to get our news & deals delivered to you.
+        </p>
+
+        <form action="" class="input-wrapper">
+          <input type="email" name="email_address" placeholder="Email Address" required class="input-field">
+
+          <button type="submit" class="submit-btn">Join</button>
+        </form>
+
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="script.js"></script>
+
+  <!-- 
+    - ionicon
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
+
 </html>
- 
