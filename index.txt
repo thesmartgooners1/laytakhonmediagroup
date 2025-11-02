@@ -205,7 +205,7 @@ Call Here
 
 #---------- FOOTER ----------#
 
-&copy; 2022 All Rights Reserved by codewithsadee
+&copy; 2022 All Rights Reserved by EmileTech
 
 
 
