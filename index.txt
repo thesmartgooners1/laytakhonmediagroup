@@ -1,4 +1,4 @@
-Desinic - Get Best UI Design
+Laytakhon Media Group
 
 
 
@@ -6,7 +6,7 @@ Desinic - Get Best UI Design
 
 Laytakhon Media Group
 
-Desinic
+Laytakhon Media Group
 
 aria-labe = Close Menu
 <ion-icon name="close-outline"></ion-icon>
