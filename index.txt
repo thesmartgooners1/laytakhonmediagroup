@@ -189,7 +189,7 @@ help@desinic.com
 <ion-icon name="location"></ion-icon>
 Pontiac, Michigan, United States of America
 
-&copy; 2022 codewithsadee. All Right Reserved
+&copy; 2025 EmileTech. All Right Reserved
 
 
 
