@@ -13,13 +13,13 @@ aria-labe = Close Menu
 
 Home
 About
-Services
+What We Do
 Features
 Blog
 Contact Us
 
 <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-Get A Quote
+Our Team
 
 aria-label = Open Menu
 <ion-icon name="menu-outline"></ion-icon>
@@ -28,11 +28,13 @@ aria-label = Open Menu
 
 #......... HERO ..........#
 
-We Are Product Designer From UK
+To be Mystery becomes history
 
-We Design Interfaces That Users Love
+Laytakhon Media Group
 
-Morbi sed lacus nec risus finibus feugiat et fermentum nibh. Pellentesque vitae ante at elit fringilla ac at purus.
+Flying
+Higher
+Together
 
 Learn More
 
@@ -44,12 +46,35 @@ alt = hero-banner
 
 alt = about banner
 
-Why Our Agency
+Description
 
-In dictum aliquam turpis lacinia iaculis. Fusce vel malesuada magna. Nulla vel maximus risus. Donec volutpat metus lacinia risus accumsan, ac bibendum libero efficitur. Pellentesque nec nisi sit amet magna tempus hendrerit ut a odio.
-
-Praesent rhoncus commodo tortor, id pulvinar nisl blandit at. Nulla facilisi. Quisque turpis ante, vehicula condimentum arcu.
-
+ဒီ Project ကိုစတင်ဖြ စ်ခဲ့ပုံ
+Social Media ခေ တ်မှာ လူတို
+လူ
+တို
+င်း
+တို
+င်း
+နည်း ပါး အကျိုး မရှိတဲ့ သတင်း
+အချ က်အလက်အမှား တွေ ၊
+တွေ
+အရည်အသွေး နိမ့်
+နိ မ့်
+တဲ့ ဖျော််််် ဖြေ ရေး တွေ များ
+တွေ များ
+လာ သည််််ကို ကျ တေ် တို့အား လုံး သတိပြု မိပြီး သား ဖြ စ်ပါ လိမ့်မယ်။ ဒါ့့့
+ကြော င့် Trend ကိုဆန့်ကျ
+န့်
+ကျင်ပြီး စနစ်သစ် Idea အသစ်တွေ နဲ့တွေ
+လူ
+နဲ့
+သား
+လူ
+သား တွေ
+ကို အကျိုး ပြု တဲ့ Media တစ်ခုပေါ် လာ ရေး လမ်း သစ်ဖော က်ဖို့အတွက်
+တွ
+က်
+Lay Takhon Project ကိုစတင်ခဲ့ခြ င်း ဖြ စ်ပါ သည်။
 9875
 Satisfied Clients
 
